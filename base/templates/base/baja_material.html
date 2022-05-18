@@ -1,0 +1,40 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Baja de material</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <h1>¡Precaución!</h1>
+                        <hr>
+                        <p>Estas a punto de dar de baja un material registrado en las entradas de materiales.</p>
+                        <p>Registro a dar de baja:</p>
+                        <h3>{{ material.id }} - {{ material.codigo.nombre }} - {{ material.descripcion }}</h3>
+                        <br>
+                        <input type="hidden" value="1" name="baja" />
+
+            <div>
+                <button type="sumbit" class="btn mb-1 btn-outline-danger">Dar de baja</button>
+                <a class="btn mb-1 btn-outline-secondary" href="{% url 'home' %}">Cancelar</a>
+            </div>
+
+        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

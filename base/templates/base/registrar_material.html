@@ -1,0 +1,54 @@
+{% extends 'base/main.html' %}
+
+{% block content %}
+<div class="row page-titles mx-0">
+    <div class="col p-md-0">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+            <li class="breadcrumb-item active"><a href="javascript:void(0)">Registro de material</a></li>
+        </ol>
+    </div>
+</div>
+<!-- row -->
+
+<div class="container-fluid">
+<div class="col-lg-12">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Registro de Material</h4>
+            <hr>
+            <p>Aquí podrás registrar los materiales.</p>
+            <br>
+            <div class="basic-form">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="material_nombre">Nombre del material</label>
+                            <input type="text" class="form-control input-default" placeholder="Nombre del material" name="nombre">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="clasif_nombre">Ingresa una clasificación</label>
+                            <input placeholder="Clasificación" class="form-control input-default" required type="text" value="{{material.clasificacion}}" name="clasificacion" list="clasif-list" />
+                            <datalist id="clasif-list">
+                                <select id="clasif_nombre">
+                                    {% for clasif in clasificaciones %}
+                                        <option value="{{clasif}}">{{clasif}}</option>
+                                    {% endfor %}
+                                </select>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="material_descripcion">Descripción del material</label>
+                        <textarea placeholder="Agrega una descripción al material" name="descripcion" class="form-control input-default h-150px" rows="3" id="descripcion"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-dark">Registrar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
